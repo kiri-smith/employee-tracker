@@ -4,23 +4,33 @@ CREATE DATABASE tracker_db;
 USE tracker_db;
 
 CREATE TABLE deparments (
-    dept_name VARCHAR(30) NOT NULL,
-    dept_id INT NOT NULL,
+    id INT NOT NULL,
+    name VARCHAR(30) NOT NULL,
+    PRIMARY KEY (id),
 );
 
 CREATE TABLE roles (
-    job_title VARCHAR(30) NOT NULL,
-    role_id INT NOT NULL,
-    department VARCHAR(30) NOT NULL,
-    salary INT NOT NULL,
+    id INT NOT NULL,
+    title VARCHAR(30) NOT NULL,
+    salary DECIMAL NOT NULL,
+    department_id INT,
+    PRIMARY KEY (id),    
+    FOREIGN KEY (id)
+    REFERENCES deparments(id)
+    ON DELETE SET NULL
 );
 
 CREATE TABLE employees (
-    emp_id INT NOT NULL,
+    id INT NOT NULL,
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
-    job_title VARCHAR(30) NOT NULL,
-    department VARCHAR(30) NOT NULL,
-    salary INT NOT NULL,
-    manager VARCHAR(30) NOT NULL,    
+    role_id INT,
+    manager_id INT,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id)
+    REFERENCES roles(id)
+    ON DELETE SET NULL
+    FOREIGN KEY (manager_id)
+    REFERENCES employees(id)
+    ON DELETE SET NULL
 );
