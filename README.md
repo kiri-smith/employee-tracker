@@ -1,5 +1,16 @@
 # employee-tracker
 
+QUESTIONS FOR ARM:
+1. what files can i remove?  html & css?
+2. linking inquirer prompt to sql
+3. saving to database -- will i use ${} and put this into my INSERT INTO ... ?
+4. updating database -- using #3 will this auto populate
+
+PLAN:
+1. check punctuation on seeds
+2. installs
+3. inquirer .prompt for user input
+
  using Node.js, Inquirer, and MySQL
 
  create a walkthrough video that demonstrates its functionality--all criteria
