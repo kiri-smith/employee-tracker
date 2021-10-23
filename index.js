@@ -21,3 +21,23 @@ const newDepartment = [
     }
 ];
 
+const newRole = [
+    {
+        type: 'input',
+        message: 'Please enter the name of the role you would like to add.',
+        name: 'role',
+        validate: (value) => { if (value) { return true } else { return 'Must enter a role name to continue.' } }
+    },
+    {
+        type: 'input',
+        message: 'Please enter the salary for the role you would like to add.',
+        name: 'role-salary',
+        validate: (value) => { if (value) { return true } else { return 'Must enter a salary to continue.' } }
+    },
+    {
+        type: 'input',
+        message: 'Please enter the department for the role you would like to add.',
+        name: 'role-department',
+        validate: (value) => { if (value) { return true } else { return 'Must enter a department to continue.' } }
+    }
+];
