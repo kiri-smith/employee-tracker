@@ -83,29 +83,32 @@ function init() {
     inquirer.prompt(userOption)
         .then((responses) => {
             if (responses.option === "view all departments") {
-
+                //link to view departments table
             } else if (responses.option = "view all roles") {
-
+                //link to view roles table
             } else if (responses.option = "view all employees") {
-
+                //link to view employees table
             } else if (responses.option = "add a department") {
                 inquirer.prompt(newDepartment)
                     .then((responses) => {
-
+                        //link to add to departments table
                     })
             } else if (responses.option = "add a role") {
                 inquirer.prompt(newRole)
                     .then((responses) => {
-
+                        //link to add to roles table
                     })
             } else if (responses.option = "add an employee") {
                 inquirer.prompt(newEmployee)
                     .then((responses) => {
-
+                        //link to add to employees table
                     })
 
             } else {
-
+                inquirer.prompt(updateEmployee)
+                    .then((responses) => {
+                        //link to update to employees table with new role
+                    })
             }
         })
 };
