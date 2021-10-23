@@ -41,3 +41,30 @@ const newRole = [
         validate: (value) => { if (value) { return true } else { return 'Must enter a department to continue.' } }
     }
 ];
+
+const newEmployee = [
+    {
+        type: 'input',
+        message: 'Please enter the first name of the employee you would like to add.',
+        name: 'first-name',
+        validate: (value) => { if (value) { return true } else { return 'Must enter a first name to continue.' } }
+    },
+    {
+        type: 'input',
+        message: 'Please enter the last name of the employee you would like to add.',
+        name: 'last-name',
+        validate: (value) => { if (value) { return true } else { return 'Must enter a last name to continue.' } }
+    },
+    {
+        type: 'input',
+        message: 'Please enter the role of the employee you would like to add.',
+        name: 'employee-role',
+        validate: (value) => { if (value) { return true } else { return 'Must enter the role to continue.' } }
+    },
+    {
+        type: 'input',
+        message: 'Please enter the manager of this new employee.',
+        name: 'manager',
+        validate: (value) => { if (value) { return true } else { return 'Must enter a manager to continue.' } }
+    },
+]
