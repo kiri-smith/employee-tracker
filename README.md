@@ -30,3 +30,6 @@ choose to add a role -- prompt to enter the name, salary, and department for the
 choose to add an employee -- prompt to enter the employee’s first name, last name, role, and manager; add to the database
 
 choose to update an employee role -- prompt to select an employee to update; new role and this information is updated in the database 
+
+
+Installs:  mySQL2, inquirer, console.table packages

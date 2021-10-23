@@ -1,0 +1,25 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "QUESTIONS:\r 2. linking inquirer prompt to sql\r 3. saving to database -- will i use ${} and put this into my INSERT INTO ... ?\r 4. updating database -- using #3 will this auto populate",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kiri-smith/employee-tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kiri-smith/employee-tracker/issues"
+  },
+  "homepage": "https://github.com/kiri-smith/employee-tracker#readme",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "inquirer": "^8.2.0",
+    "mysql2": "^2.3.2"
+  }
+}
