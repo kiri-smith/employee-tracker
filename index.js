@@ -2,11 +2,11 @@ const mysql = require('mysql2');
 const inquirer = require('inquirer');
 const consoleTable = require('console.table');
 
-const userOptions = [
+const userOption = [
     {
         type: 'list',
         message: "Welcome! What would you like to do?",
-        name: 'options',
+        name: 'option',
         choices: ['view all departments', 'view all roles', 'view all employees', 'add a department', 'add a role', 'add an employee', 'update an employee role'],
         validate: (value) => { if (value) { return true } else { return 'Must choose an option to continue.' } }
     }
@@ -67,4 +67,59 @@ const newEmployee = [
         name: 'manager',
         validate: (value) => { if (value) { return true } else { return 'Must enter a manager to continue.' } }
     },
+];
+
+const updateEmployee = [
+    {
+        type: 'list',
+        message: 'Choose the employee you would like to update.',
+        name: 'role-update',
+        choices: [''], //needs link to emps here
+        validate: (value) => { if (value) { return true } else { return 'Must choose an employee to continue.' } }
+    }
 ]
+
+function init() {
+    inquirer.prompt(userOption)
+        .then((responses) => {
+            if (responses.option === "view all departments") {
+
+            } else if (responses.option = "view all roles") {
+
+            } else if (responses.option = "view all employees") {
+
+            } else if (responses.option = "add a department") {
+                inquirer.prompt(newDepartment)
+                    .then((responses) => {
+
+                    })
+            } else if (responses.option = "add a role") {
+                inquirer.prompt(newRole)
+                    .then((responses) => {
+
+                    })
+            } else if (responses.option = "add an employee") {
+                inquirer.prompt(newEmployee)
+                    .then((responses) => {
+
+                    })
+
+            } else {
+
+            }
+        })
+};
+
+
+
+inquirer.prompt(whichEmployee)
+    .then((responses) => {
+
+        //if they answer yes, prompt manager questions
+        if (responses.role === 'Manager') {
+            inquirer.prompt(managerQuestions)
+                .then((responses) => {
+                    const addedManager = new Manager(responses.managerName, responses.managerIdNumber, responses.managerEmail, responses.office);
+                    newManager.push(addedManager);
+                    addTeam();
+                })
