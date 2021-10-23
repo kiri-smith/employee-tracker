@@ -7,7 +7,6 @@ QUESTIONS:
 
 PLAN:
 1. check punctuation on seeds
-2. installs
 3. inquirer .prompt for user input
 
  using Node.js, Inquirer, and MySQL
