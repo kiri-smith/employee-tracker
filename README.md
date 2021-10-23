@@ -1,7 +1,6 @@
 # employee-tracker
 
-QUESTIONS FOR ARM:
-1. what files can i remove?  html & css?
+QUESTIONS:
 2. linking inquirer prompt to sql
 3. saving to database -- will i use ${} and put this into my INSERT INTO ... ?
 4. updating database -- using #3 will this auto populate
