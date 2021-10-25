@@ -25,7 +25,7 @@ const userOption = [
         type: 'list',
         message: "Welcome! What would you like to do?",
         name: 'option',
-        choices: ['view all departments', 'view all roles', 'view all employees', 'add a department', 'add a role', 'add an employee', 'update an employee role'],
+        choices: ['view all departments', 'view all roles', 'view all employees', 'add a department', 'add a role', 'add an employee', 'update an employee role', 'exit'],
         validate: (value) => { if (value) { return true } else { return 'Must choose an option to continue.' } }
     }
 ];
@@ -101,11 +101,26 @@ function init() {
     inquirer.prompt(userOption)
         .then((responses) => {
             if (responses.option === "view all departments") {
-                //need
+                dbConnection.query("SELECT * FROM department", (err, res) => {
+                    if (err)
+                        throw err;
+                    console.table(res);
+                    init();
+                });
             } else if (responses.option = "view all roles") {
-                //need
+                dbConnection.query("SELECT * FROM role", (err, res) => {
+                    if (err)
+                        throw err;
+                    console.table(res);
+                    init();
+                });
             } else if (responses.option = "view all employees") {
-                //need
+                dbConnection.query("SELECT * FROM employee", (err, res) => {
+                    if (err)
+                        throw err;
+                    console.table(res);
+                    init();
+                });
             } else if (responses.option = "add a department") {
                 inquirer.prompt(newDepartment)
                     .then((responses) => {
