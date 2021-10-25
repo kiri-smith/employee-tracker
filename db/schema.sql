@@ -3,10 +3,10 @@ CREATE DATABASE tracker_db;
 
 USE tracker_db;
 
-CREATE TABLE deparment (
-    id INT NOT NULL AUTO_INCREMENT ,
+CREATE TABLE department (
+    id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(30) NOT NULL,
-    PRIMARY KEY (id),
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE role (
@@ -16,8 +16,7 @@ CREATE TABLE role (
     department_id INT NOT NULL,
     PRIMARY KEY (role_id),    
     FOREIGN KEY (department_id)
-    REFERENCES deparment(id)
-    ON DELETE SET NULL
+    REFERENCES department(id)
 );
 
 CREATE TABLE employee (
@@ -29,8 +28,4 @@ CREATE TABLE employee (
     PRIMARY KEY (employee_id),
     FOREIGN KEY (employee_role_id)
     REFERENCES role(role_id)
-    ON DELETE SET NULL
-    FOREIGN KEY (manager_id)
-    REFERENCES employee(employee_id)
-    ON DELETE SET NULL
 );

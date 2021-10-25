@@ -1,13 +1,12 @@
-DROP DATABASE IF EXISTS tracker_db;
-CREATE DATABASE tracker_db;
-
 USE tracker_db;
 
-INSERT INTO deparment (name)
+INSERT INTO department (name)
 VALUES ("English Language Arts"),
 ("Mathematics"),
 ("Science"),
-("Social Studies")
+("Social Studies"),
+("Special Eduaction"),
+("ESOL")
 ;
 
 INSERT INTO role (title, salary, department_id)
@@ -28,10 +27,10 @@ VALUES ("Department Head", 75000, 1),
 ("Teaching Assistant", 45000, 5),
 ("Department Head", 75000, 6),
 ("Teacher", 65000, 6),
-("Teaching Assistant", 45000, 6),
+("Teaching Assistant", 45000, 6)
 ;
 
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
+INSERT INTO employee (first_name, last_name, employee_role_id, manager_id)
 VALUES ("Mary", "Brown", 1, null),
 ("Bob", "White", 2, 1),
 ("Tyrell", "Green", 2, 1),
@@ -43,6 +42,5 @@ VALUES ("Mary", "Brown", 1, null),
 ("Parker", "Pink", 1, null),
 ("Sam", "Tan", 2, 3),
 ("Lillie", "Gray", 2, 3),
-("Griselda", "Yellow", 3, 3),
-
+("Griselda", "Yellow", 3, 3)
 ;
