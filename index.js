@@ -49,13 +49,13 @@ const newRole = [
     {
         type: 'input',
         message: 'Please enter the salary for the role you would like to add.',
-        name: 'role-salary',
+        name: 'roleSalary',
         validate: (value) => { if (value) { return true } else { return 'Must enter a salary to continue.' } }
     },
     {
         type: 'input',
-        message: 'Please enter the department for the role you would like to add.',
-        name: 'role-department',
+        message: 'Please enter the department ID for the role you would like to add.',
+        name: 'roleDepartment',
         validate: (value) => { if (value) { return true } else { return 'Must enter a department to continue.' } }
     }
 ];
@@ -64,19 +64,19 @@ const newEmployee = [
     {
         type: 'input',
         message: 'Please enter the first name of the employee you would like to add.',
-        name: 'first-name',
+        name: 'firstName',
         validate: (value) => { if (value) { return true } else { return 'Must enter a first name to continue.' } }
     },
     {
         type: 'input',
         message: 'Please enter the last name of the employee you would like to add.',
-        name: 'last-name',
+        name: 'lastName',
         validate: (value) => { if (value) { return true } else { return 'Must enter a last name to continue.' } }
     },
     {
         type: 'input',
         message: 'Please enter the role of the employee you would like to add.',
-        name: 'employee-role',
+        name: 'employeeRole',
         validate: (value) => { if (value) { return true } else { return 'Must enter the role to continue.' } }
     },
     {
@@ -91,7 +91,7 @@ const updateEmployee = [
     {
         type: 'list',
         message: 'Choose the employee you would like to update.',
-        name: 'role-update',
+        name: 'roleUpdate',
         choices: [''], //needs link to emps here
         validate: (value) => { if (value) { return true } else { return 'Must choose an employee to continue.' } }
     }
@@ -109,29 +109,36 @@ function init() {
             } else if (responses.option = "add a department") {
                 inquirer.prompt(newDepartment)
                     .then((responses) => {
-                        dbConnection.query("INSERT INTO department SET ?", { name: responses.department }, (err, res) => {
-                            if (err)
-                                throw err;
-                            console.log("You successfully added a new department!")
-                            init();
-                        })
-                    })
+                        dbConnection.query("INSERT INTO department SET ?",
+                            { name: responses.department }, (err, res) => {
+                                if (err)
+                                    throw err;
+                                console.log("You successfully added a new department.")
+                                init();
+                            });
+                    });
             } else if (responses.option = "add a role") {
                 inquirer.prompt(newRole)
                     .then((responses) => {
-                        //need   
-                    })
+                        dbConnection.query("INSERT INTO role SET ?",
+                            { title: responses.role, salary: pareseInt(responses.roleSalary), department_id: parseInt(resposnes.roleDepartment) }, (err, res) => {
+                                if (err)
+                                    throw err;
+                                console.log("You successfully added a new role.")
+                                init();
+                            });
+                    });
             } else if (responses.option = "add an employee") {
                 inquirer.prompt(newEmployee)
                     .then((responses) => {
                         //need  
-                    })
+                    });
 
             } else if (responses.option = "update an employee role") {
                 inquirer.prompt(updateEmployee)
                     .then((responses) => {
                         //need   
-                    })
+                    });
             } else {
                 init();
             }
