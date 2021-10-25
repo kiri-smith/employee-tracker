@@ -75,13 +75,13 @@ const newEmployee = [
     },
     {
         type: 'input',
-        message: 'Please enter the role of the employee you would like to add.',
+        message: 'Please enter the role ID of the employee you would like to add.',
         name: 'employeeRole',
         validate: (value) => { if (value) { return true } else { return 'Must enter the role to continue.' } }
     },
     {
         type: 'input',
-        message: 'Please enter the manager of this new employee.',
+        message: 'Please enter the manager ID of this new employee.',
         name: 'manager',
         validate: (value) => { if (value) { return true } else { return 'Must enter a manager to continue.' } }
     },
@@ -131,7 +131,13 @@ function init() {
             } else if (responses.option = "add an employee") {
                 inquirer.prompt(newEmployee)
                     .then((responses) => {
-                        //need  
+                        dbConnection.query("INSERT INTO employee SET ?",
+                            { first_name: responses.firstName, last_name: responses.lastName, employee_role_id: parseInt(responses.employeeRole), manager_id: parseInt(responses.manager) }, (err, res) => {
+                                if (err)
+                                    throw err;
+                                console.log("You successfully added a new employee.")
+                                init();
+                            });
                     });
 
             } else if (responses.option = "update an employee role") {
