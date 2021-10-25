@@ -87,35 +87,58 @@ const newEmployee = [
     },
 ];
 
-const updateEmployee = [
-    {
-        type: 'list',
-        message: 'Choose the employee you would like to update.',
-        name: 'roleUpdate',
-        choices: [''], //needs link to emps here
-        validate: (value) => { if (value) { return true } else { return 'Must choose an employee to continue.' } }
-    }
-]
+function updateEmployee() {
+    dbConnection.query("SELECT employee_id, first_name, las_name FROM employee", (err, res) => {
+        if (err)
+            throw err;
+        inquirer.prompt(
+            [
+                {
+                    type: 'input',
+                    message: 'Enter the ID of the employee you would like to update.',
+                    name: 'employeeId',
+                    validate: (value) => { if (value) { return true } else { return 'Must enter an employee ID to continue.' } }
+                },
+
+                {
+                    type: 'input',
+                    message: 'Enter the new Role ID for this employee.',
+                    name: 'newRoleId',
+                    validate: (value) => { if (value) { return true } else { return 'Must enter a department ID to continue.' } }
+                },
+            ])
+            .then(responses => {
+                let updateEmployee = parseInt(responses.employeeId);
+                let newRoleId = parseInt(responses.newRoleId);
+                dbConnection.query(`UPDATE employee SET role_id = ${newRoleId} WHERE employee_id = ${updateEmployee}`, (err, res) => {
+                    if (err)
+                        throw err;
+                    console.log("Employee has been successfully updated.")
+                    init();
+                })
+            })
+    })
+}
 
 function init() {
     inquirer.prompt(userOption)
         .then((responses) => {
             if (responses.option === "view all departments") {
-                dbConnection.query("SELECT * FROM department", (err, res) => {
+                dbConnection.query(`SELECT * FROM department`, (err, res) => {
                     if (err)
                         throw err;
                     console.table(res);
                     init();
                 });
             } else if (responses.option = "view all roles") {
-                dbConnection.query("SELECT * FROM role", (err, res) => {
+                dbConnection.query(`SELECT * FROM role`, (err, res) => {
                     if (err)
                         throw err;
                     console.table(res);
                     init();
                 });
             } else if (responses.option = "view all employees") {
-                dbConnection.query("SELECT * FROM employee", (err, res) => {
+                dbConnection.query(`SELECT * FROM employee`, (err, res) => {
                     if (err)
                         throw err;
                     console.table(res);
@@ -154,12 +177,8 @@ function init() {
                                 init();
                             });
                     });
-
             } else if (responses.option = "update an employee role") {
-                inquirer.prompt(updateEmployee)
-                    .then((responses) => {
-                        //need   
-                    });
+                updateEmployee();
             } else {
                 init();
             }
