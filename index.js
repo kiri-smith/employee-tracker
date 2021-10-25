@@ -1,6 +1,24 @@
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
 const consoleTable = require('console.table');
+const Connection = require('mysql2/typings/mysql/lib/Connection');
+
+const dbConnection = mysql.createConnection(
+    {
+        host: "localhost",
+        user: "root",
+        password: "password",
+        database: "tracker_db"
+    }
+);
+
+dbConnection(err => {
+    if (err) {
+        throw err
+    }
+    console.log('Connected to tracker_db')
+    init();
+});
 
 const userOption = [
     {
@@ -83,32 +101,39 @@ function init() {
     inquirer.prompt(userOption)
         .then((responses) => {
             if (responses.option === "view all departments") {
-                //link to view departments table
+                //need
             } else if (responses.option = "view all roles") {
-                //link to view roles table
+                //need
             } else if (responses.option = "view all employees") {
-                //link to view employees table
+                //need
             } else if (responses.option = "add a department") {
                 inquirer.prompt(newDepartment)
                     .then((responses) => {
-                        //link to add to departments table
+                        dbConnection.query("INSERT INTO department SET ?", { name: responses.department }, (err, res) => {
+                            if (err)
+                                throw err;
+                            console.log("You successfully added a new department!")
+                            init();
+                        })
                     })
             } else if (responses.option = "add a role") {
                 inquirer.prompt(newRole)
                     .then((responses) => {
-                        //link to add to roles table
+                        //need   
                     })
             } else if (responses.option = "add an employee") {
                 inquirer.prompt(newEmployee)
                     .then((responses) => {
-                        //link to add to employees table
+                        //need  
                     })
 
-            } else {
+            } else if (responses.option = "update an employee role") {
                 inquirer.prompt(updateEmployee)
                     .then((responses) => {
-                        //link to update to employees table with new role
+                        //need   
                     })
+            } else {
+                init();
             }
         })
 };
@@ -126,3 +151,6 @@ inquirer.prompt(whichEmployee)
                     newManager.push(addedManager);
                     addTeam();
                 })
+        }
+    }
+    );
