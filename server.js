@@ -119,7 +119,7 @@ function addRole() {
     )
         .then((responses) => {
             dbConnection.query("INSERT INTO role SET ?",
-                { title: responses.role, salary: pareseInt(responses.roleSalary), department_id: parseInt(resposnes.roleDepartment) }, (err, res) => {
+                { title: responses.role, salary: parseInt(responses.roleSalary), department_id: parseInt(responses.roleDepartment) }, (err, res) => {
                     if (err)
                         throw err;
                     console.log("You successfully added a new role.")
@@ -170,7 +170,7 @@ function addEmployee() {
 
 
 function updateEmployee() {
-    dbConnection.query("SELECT employee_id, first_name, las_name FROM employee", (err, res) => {
+    dbConnection.query(`SELECT employee_id, first_name, last_name FROM employee`, (err, res) => {
         if (err)
             throw err;
         inquirer.prompt(
@@ -192,7 +192,7 @@ function updateEmployee() {
             .then(responses => {
                 let updateEmployee = parseInt(responses.employeeId);
                 let newRoleId = parseInt(responses.newRoleId);
-                dbConnection.query(`UPDATE employee SET role_id = ${newRoleId} WHERE employee_id = ${updateEmployee}`, (err, res) => {
+                dbConnection.query(`UPDATE employee SET employee_role_id = ${newRoleId} WHERE employee_id = ${updateEmployee}`, (err, res) => {
                     if (err)
                         throw err;
                     console.log("Employee has been successfully updated.")
