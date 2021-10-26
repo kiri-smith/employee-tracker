@@ -10,8 +10,9 @@ What the user enters:
 <img src="assets\Snip1.JPG" alt="Screenshot of Inquirer Prompts">
 
 Table examples based on user input:
-<img src="assets\Snip2.JPG" alt="Snippet of ...">
-<img src="assets\Snip3.JPG" alt="Snippet of ...">
+<img src="assets\Snip2.JPG" alt="Snippet of Employees table">
+<img src="assets\Snip3.JPG" alt="Snippet of Roles table">
+<img src="assets\Snip4.JPG" alt="Snippet of Departments table">
 
 ## Demo Video
 
@@ -25,10 +26,6 @@ Table examples based on user input:
 * [mysql2](https://www.npmjs.com/package/mysql2) - to create and display tables in the terminal
 * [Git](https://git-scm.com/) - to track changes and push commits
 * [GitHub](github.com) - to host the repository and deploy with GitHub pages
-
-## Deployed Link
-
-* [add link here](#)
 
 ## Author
 
