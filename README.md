@@ -16,7 +16,7 @@ Table examples based on user input:
 
 ## Demo Video
 
-* [link here](#)
+* [https://watch.screencastify.com/v/utDIFIbYTvfHSGlBOETn](#)
 
 ## Built With
 
