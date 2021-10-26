@@ -31,15 +31,15 @@ VALUES ("Department Head", 75000, 1),
 ;
 
 INSERT INTO employee (first_name, last_name, employee_role_id, manager_id)
-VALUES ("Mary", "Brown", 1, null),
+VALUES ("Mary", "Brown", 1, 1),
 ("Bob", "White", 2, 1),
 ("Tyrell", "Green", 2, 1),
-("Sue", "Black", 3, 1),
-("Jay", "Red", 1, null),
+("Sue", "Black", 3, 2),
+("Jay", "Red", 1, 5),
 ("Gisele", "Orange", 2, 2),
 ("Omar", "Violet", 2, 2),
 ("Phineas", "Purple", 3, 2),
-("Parker", "Pink", 1, null),
+("Parker", "Pink", 1, 3),
 ("Sam", "Tan", 2, 3),
 ("Lillie", "Gray", 2, 3),
 ("Griselda", "Yellow", 3, 3)
